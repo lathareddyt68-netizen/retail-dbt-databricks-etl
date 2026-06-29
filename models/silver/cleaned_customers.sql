@@ -24,8 +24,8 @@ WITH cleaned AS (
 
         COALESCE(city, 'UNKNOWN') AS city,
 
-        TRY_TO_DATE(signup_date) AS signup_date,
-        TRY_TO_NUMBER(age) AS age
+        TRY_CAST(signup_date AS DATE),
+        TRY_CAST(age AS INT) AS age
 
     FROM {{ ref('customers') }}
 

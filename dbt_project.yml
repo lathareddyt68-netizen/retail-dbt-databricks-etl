@@ -1,25 +1,26 @@
-# Name your project! Project names should contain only lowercase characters
-# and underscores. A good package name should reflect your organization's
-# name or the intended use of these models
 name: retail_dbt_project
 version: 1.0
 config-version: 2
 
-profile: retail_dbt_project # 👈 IMPORTANT (must match profiles.yml)
+profile: retail_dbt_project
 
 model-paths: ["models"]
 seed-paths: ["seeds"]
+
+models:
+  retail_dbt_project:
+    +catalog: workspace
+
+    silver:
+      +schema: silver
+
+    gold:
+      +schema: gold
+
+    platinum:
+      +schema: platinum
 
 seeds:
   retail_dbt_project:
     +catalog: workspace
     +schema: dev
-
-models:
-  retail_dbt_project:
-    silver:
-      +schema: silver
-    gold:
-      +schema: gold
-    platinum:
-      +schema: platinum
