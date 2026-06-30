@@ -12,6 +12,6 @@ SELECT
 
     signup_date,
 
-    DATEDIFF('day', signup_date, CURRENT_DATE) AS customer_tenure_days
+    DATEDIFF(DAY, signup_date, CURRENT_DATE) AS customer_tenure_days
 
 FROM {{ ref('dim_customers') }}
