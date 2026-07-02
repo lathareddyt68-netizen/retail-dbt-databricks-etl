@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: stg_mymoviedb
+    description: Cleaned and standardized movie dataset from Bronze layer.
+
+    columns:
+      - name: release_date
+        description: Movie release date
+        tests:
+          - not_null
+
+      - name: title
+        description: Movie title
+        tests:
+          - not_null
+
+      - name: popularity
+        description: Popularity score
+        tests:
+          - not_null
+
+      - name: vote_count
+        description: Number of votes
+        tests:
+          - not_null
+
+      - name: vote_average
+        description: Average movie rating
+        tests:
+          - not_null
+
+      - name: original_language
+        description: Movie language
+        tests:
+          - not_null
+
+      - name: genre
+        description: Movie genre
+        tests:
+          - not_null

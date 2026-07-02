@@ -22,4 +22,4 @@ SELECT
         ELSE 'VALID'
     END AS record_status
 
-FROM {{ ref('mymoviedb') }}
+FROM {{ source('bronze', 'mymoviedb') }}

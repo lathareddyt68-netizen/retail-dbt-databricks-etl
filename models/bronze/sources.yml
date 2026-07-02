@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: bronze
+    description: Raw datasets loaded into the Bronze layer
+
+    catalog: workspace
+    schema: dev
+
+    tables:
+      - name: mymoviedb
+        description: Raw movie dataset loaded using dbt seed
+
+      - name: customers
+        description: Raw customer dataset loaded using dbt seed
+
+      - name: sales
+        description: Raw sales dataset loaded using dbt seed
