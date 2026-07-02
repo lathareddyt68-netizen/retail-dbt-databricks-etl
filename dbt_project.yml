@@ -24,3 +24,8 @@ seeds:
   retail_dbt_project:
     +catalog: workspace
     +schema: dev
+
+    vars:
+  batch_id: "BATCH_001"
+  pipeline_name: "movie_pipeline"
+  pipeline_run_id: "RUN_001"
