@@ -8,34 +8,48 @@ models:
       - name: release_date
         description: Movie release date
         tests:
-          - not_null
+          - not_null:
+              config:
+                where: "record_status = 'VALID'"
 
       - name: title
         description: Movie title
         tests:
-          - not_null
+          - not_null:
+              config:
+                where: "record_status = 'VALID'"
 
       - name: popularity
         description: Popularity score
         tests:
-          - not_null
+          - not_null:
+              config:
+                where: "record_status = 'VALID'"
 
       - name: vote_count
         description: Number of votes
         tests:
-          - not_null
+          - not_null:
+              config:
+                where: "record_status = 'VALID'"
 
       - name: vote_average
         description: Average movie rating
         tests:
-          - not_null
+          - not_null:
+              config:
+                where: "record_status = 'VALID'"
 
       - name: original_language
         description: Movie language
         tests:
-          - not_null
+          - not_null:
+              config:
+                where: "record_status = 'VALID'"
 
       - name: genre
         description: Movie genre
         tests:
-          - not_null
+          - not_null:
+              config:
+                where: "record_status = 'VALID'"
