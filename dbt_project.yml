@@ -25,7 +25,7 @@ seeds:
     +catalog: workspace
     +schema: dev
 
-    vars:
+vars:
   batch_id: "BATCH_001"
   pipeline_name: "movie_pipeline"
   pipeline_run_id: "RUN_001"
