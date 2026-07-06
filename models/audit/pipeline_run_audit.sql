@@ -7,7 +7,7 @@
 SELECT
     CONCAT(
     'BATCH_',
-    DATE_FORMAT(CURRENT_TIMESTAMP(), 'yyyyMMdd_HHmmss')
+    DATE_FORMAT(CURRENT_DATE(), 'yyyyMMdd','_001')
 ) AS batch_id,
 
 'movie_pipeline' AS pipeline_name,
