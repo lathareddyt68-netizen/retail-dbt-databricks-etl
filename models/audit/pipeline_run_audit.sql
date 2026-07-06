@@ -5,18 +5,12 @@
 ) }}
 
 SELECT
-    CONCAT(
-        'BATCH_',
-        DATE_FORMAT(CURRENT_DATE(), 'yyyyMMdd'),
-        '_001'
-    ) AS batch_id,
 
-'movie_pipeline' AS pipeline_name,
+    '{{ var("batch_id") }}' AS batch_id,
 
-CONCAT(
-    'RUN_',
-    DATE_FORMAT(CURRENT_TIMESTAMP(), 'yyyyMMdd_HHmmss')
-) AS pipeline_run_id,
+    'movie_pipeline' AS pipeline_name,
+
+    '{{ var("pipeline_run_id") }}' AS pipeline_run_id,
 
     CURRENT_TIMESTAMP() AS start_time,
 
