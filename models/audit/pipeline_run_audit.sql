@@ -6,10 +6,10 @@
 
 SELECT
     CONCAT(
-    'BATCH_',
-    DATE_FORMAT(CURRENT_DATE(), 'yyyyMMdd'),
-    '_001'
-          ) AS batch_id,
+        'BATCH_',
+        DATE_FORMAT(CURRENT_DATE(), 'yyyyMMdd'),
+        '_001'
+    ) AS batch_id,
 
 'movie_pipeline' AS pipeline_name,
 
