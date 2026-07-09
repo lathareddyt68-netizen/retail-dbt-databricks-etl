@@ -8,9 +8,15 @@ on:
   pull_request:
     branches:
       - main
+
 jobs:
   dbt-build:
     runs-on: ubuntu-latest
+
+    env:
+      DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+      DATABRICKS_HTTP_PATH: ${{ secrets.DATABRICKS_HTTP_PATH }}
+      DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
 
     steps:
       - name: Checkout Repository
@@ -21,37 +27,36 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dbt
+      - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install dbt-databricks
 
-      - name: Install dbt Packages
-        run: dbt deps
-
-      - name: Create dbt Profile
+      - name: Create profiles.yml
         run: |
           mkdir -p ~/.dbt
-
           cat > ~/.dbt/profiles.yml <<EOF
           retail_dbt_project:
             target: dev
             outputs:
               dev:
                 type: databricks
-                host: ${{ secrets.DATABRICKS_HOST }}
-                http_path: ${{ secrets.DATABRICKS_HTTP_PATH }}
-                token: ${{ secrets.DATABRICKS_TOKEN }}
-                catalog: ${{ secrets.DATABRICKS_CATALOG }}
-                schema: ${{ secrets.DATABRICKS_DEV_SCHEMA }}
-                threads: 4
+                host: "{{ env_var('DATABRICKS_HOST') }}"
+                http_path: "{{ env_var('DATABRICKS_HTTP_PATH') }}"
+                token: "{{ env_var('DATABRICKS_TOKEN') }}"
+                catalog: workspace
+                schema: dev
+                threads: 1
           EOF
 
-      - name: Verify dbt Connection
+      - name: Install dbt Packages
+        run: dbt deps
+
+      - name: Verify Connection
         run: dbt debug
 
-      - name: Run dbt Tests
+      - name: Run Tests
         run: dbt test
 
-      - name: Run dbt Models
+      - name: Run Models
         run: dbt run
