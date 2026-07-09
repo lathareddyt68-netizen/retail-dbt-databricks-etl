@@ -25,6 +25,10 @@ seeds:
     +catalog: workspace
     +schema: dev
 
+snapshots:
+  retail_dbt_project:
+    +target_schema: snapshot
+
 vars:
   batch_id: "BATCH_001"
   pipeline_name: "movie_pipeline"
